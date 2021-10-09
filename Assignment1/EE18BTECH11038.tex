@@ -154,10 +154,43 @@ Brute force approach involves sorting the arrays. After sorting, the task of fin
 The exact steps are - 
 \begin{itemize}
     \item Sort each array - $O(nlogn)$ for each array, $O(n^{2}logn)$ on the whole.
-    \item Find the median of each sorted array - the element at  index $n/2$ (0-indexed).
-    \item Store these n medians in a separate array - $O(n)$.
-    \item Sort this new array - $O(nlogn)$.
-    \item Find the median of this new array; this is the median of medians - $O(1)$.
+    \item Find the median of each sorted array - the element at  index $(n-1)/2$ (0-indexed) - for this left multiply the matrix with the following $1 \times n$ matrix ( that has one at $(n+1)/2$ and all other entries are zero)  - 
+
+    \begin{center}
+        
+        $
+        \begin{bmatrix}
+            0 & 0 & . & . & 1 & . & . & 0 & 0 
+        \end{bmatrix}
+        $
+        
+    \end{center}
+
+    
+    \item This gives another $1 \times n$ matrix that contains the medians of the individual rows. 
+    \item Sort this new matrix - $O(nlogn)$.
+    \item Find the median of this new matrix by right mutiplying the matrix with the following $n \times 1 $ matrix (that has one at $(n+1)/2$ and all other entries are zero) - 
+    
+    \begin{center}
+        
+
+        $
+        \begin{bmatrix}
+            0\\
+            0\\
+            .\\
+            .\\
+            1\\
+            .\\
+            .\\
+            0\\
+            0\\
+        \end{bmatrix}
+        $
+      
+    \end{center}
+
+    \item The resulting $1\times1$ matrix has just one entry which is the median of medians - $O(1)$.
 \end{itemize}
 Let us now analyze the time complexity of this approach - 
 \newline
