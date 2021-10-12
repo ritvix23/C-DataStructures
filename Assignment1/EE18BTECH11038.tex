@@ -195,11 +195,10 @@ The exact steps are -
     \item The resulting $1\times1$ matrix has just one entry which is the median of medians - $O(1)$.
 \end{itemize}
 Let us now analyze the time complexity of this approach - 
-\newline
-
-    $T(n) = O(n^{2}logn + n + nlogn + 1)$ 
-    $\implies O(n^{2}logn)$
-
+    \begin{equation}
+    T(n) = O(n^{2}logn + n + nlogn + 1) \label{eq:runtime_naive}
+    \implies O(n^{2}logn)
+    \end{equation}
 
 \subsection{Efficient Approach}
 It should be intuitively clear that we are doing a lot of redundant work in sorting the arrays, while all we need is the middle element after sorting. Let us now look at an efficient approach to find this middle element without the need to sort the entire array. For a while, let us assume we have a routine - $qselect(k, array)$, that returns $k^{th}$ element, after sorting, in $array$ in linear time ($O(n)$).
@@ -213,9 +212,11 @@ Now, consider the following algorithm -
 
 Let us now analyze the time complexity for this algorithm - 
 \newline
-
-    $T(n)  = O(n^{2} + n + n + 1)$
-    $\implies O(n^{2})$
+    \begin{equation}
+        T(n)  = O(n^{2} + n + n + 1) \label{eq:runtime_eff}
+        \implies O(n^{2})
+    \end{equation}
+    
 
 \subsection{Uncovering $qselect(.. , ..)$}
 
@@ -279,9 +280,12 @@ Pseudo code for qselect is as follows -
 \end{algorithmic}
 \end{algorithm}
 
-Theoretical time complexity can be calculated from the recursive relation - \\
-$T(N)  = T(N/2) + O(N)$ \\
-$\implies T(N) = O(N)$ \\
+Theoretical time complexity can be calculated from the recursive relation - 
+\begin{equation}
+    T(N)  = T(N/2) + O(N) \label{eq:runtime_qselect}\\
+    \implies T(N) = O(N)
+\end{equation}
+
 the next section  verifies the theoretical results. 
 \section{Verification}
 To verify the theoretical results, I measured the execution times of both the algorithms and plotted them with the theoretical bounds - 
