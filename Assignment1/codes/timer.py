@@ -7,6 +7,7 @@ import math
 
 
 
+
 n = 5
 while(n<10000):
     proc = subprocess.Popen(["./problem1", str(n)])
@@ -39,9 +40,11 @@ sq = [x*x/c1 for x in ns]
 c2 = 1.6* pow(10, 8)
 logn = [x*x*math.log(x, 2)/c2 for x in ns]
 
-plt.plot(ns, sq, color = 'b', label='c1*n^2')
-plt.plot(ns, logn, color = 'r', label='c2*(n^2)*logn')
+plt.plot(ns, sq, color = 'b', label=r'$(1.88x10^{-8})n^{2}$')
+plt.plot(ns, logn, color = 'r', label=r'$(6.25x10^{-9})n^{2}logn$')
 
-plt.legend()
+plt.legend()	
+plt.xlabel('n') 
+plt.ylabel('Time(s)')
 # plt.show()
 plt.savefig('plot.png')
